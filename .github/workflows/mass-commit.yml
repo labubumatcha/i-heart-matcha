@@ -26,4 +26,4 @@ jobs:
             git add .mass-commit-log.txt
             git commit -m "Automated commit $i [skip ci]"
           done
-          git push
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref_name }}
