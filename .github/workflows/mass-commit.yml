@@ -1,0 +1,29 @@
+name: Mass Commit
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs every day at midnight UTC
+  workflow_dispatch:     # Allows manual triggering
+
+jobs:
+  mass-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Make 20 commits
+        run: |
+          for i in {1..20}
+          do
+            echo "$(date) Commit $i" >> .mass-commit-log.txt
+            git add .mass-commit-log.txt
+            git commit -m "Automated commit $i [skip ci]"
+          done
+          git push
