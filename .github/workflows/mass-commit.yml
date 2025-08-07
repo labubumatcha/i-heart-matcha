@@ -16,7 +16,7 @@ jobs:
       - name: Set up Git
         run: |
           git config --global user.name "labubumatcha"
-          git config --global user.email "your-email@example.com" # CHANGE THIS to your GitHub email
+          git config --global user.email "typitutube2017@gmail.com"
 
       - name: Make 20 commits
         env:
